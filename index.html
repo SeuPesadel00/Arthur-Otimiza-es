@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arthur Otimizações | Game Booster</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00ffff; /* Ciano Neon */
+            --secondary: #ff00ff; /* Rosa Neon */
+            --bg: #0a0a0c;
+            --card-bg: #16161a;
+            --text: #e1e1e6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #16161a 0%, #000 100%);
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .hero-title {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .btn-download {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary), #008b8b);
+            color: #000;
+            padding: 18px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+
+        .btn-download:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        h2 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            border-left: 4px solid var(--secondary);
+            padding-left: 15px;
+        }
+
+        .step-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border: 1px solid #333;
+        }
+
+        .step-number {
+            background: var(--secondary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .print-space {
+            width: 100%;
+            min-height: 250px;
+            background: #252529;
+            margin-top: 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #444;
+            overflow: hidden;
+        }
+
+        .print-space img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .warning {
+            background: rgba(255, 0, 255, 0.1);
+            border: 1px solid var(--secondary);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+            color: #666;
+            border-top: 1px solid #222;
+        }
+
+        code {
+            background: #000;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 class="hero-title">Arthur Otimizações</h1>
+        <p>Aumente seu FPS e reduza o input lag do Windows com um script automatizado.</p>
+        <a href="SCRIPT/Booster.rar" class="btn-download" download>BAIXAR SCRIPT (.BAT)</a>
+    </header>
+
+    <div class="container">
+        
+        <section class="section">
+            <h2>Como usar o Script</h2>
+            
+            <div class="step-card">
+                <h3><span class="step-number">1</span> Baixar e Extrair</h3>
+                <p>Clique no botão acima para baixar o arquivo. Recomendo colocar o script em uma pasta própria na sua área de trabalho para fácil acesso.</p>
+                <div class="print-space">
+                    <img src="img/1.png" alt="Print mostrando o download do arquivo">
+                    </div>
+            </div>
+
+            <div class="step-card">
+                <h3><span class="step-number">2</span> Executar como Administrador</h3>
+                <p>Isso é <strong>obrigatório</strong>. Como o script altera registros do sistema para melhorar a performance, ele precisa de permissões totais. Clique com o botão direito no arquivo e escolha <code>Executar como administrador</code>.</p>
+                <div class="print-space">
+                    <img src="img/2.png" alt="Print clicando com botão direito > Executar como admin">
+                </div>
+            </div>
+
+            <div class="step-card">
+                <h3><span class="step-number">3</span> Criar Ponto de Restauração</h3>
+                <p>Segurança em primeiro lugar! Antes de qualquer mudança, use a <strong>Opção 1</strong> do menu para criar um ponto de restauração. Assim, se você não gostar de alguma alteração, pode voltar ao estado anterior facilmente.</p>
+                <div class="print-space">
+                    <img src="img/3.png" alt="Print mostrando a opção 1 do menu no script">
+                </div>
+            </div>
+
+            <div class="step-card">
+                <h3><span class="step-number">4</span> Escolher Otimizações</h3>
+                <p>Navegue pelo menu. Você pode otimizar a memória RAM, prioridade de jogos específicos (como DayZ ou GTA V) e desativar serviços inúteis do Windows que consomem CPU.</p>
+                <div class="print-space">
+                    <img src="img/4.png" alt="Print do menu principal com as opções">
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>O que este script faz?</h2>
+            <ul>
+                <li>⚡ <strong>Plano de Energia:</strong> Ativa o modo de desempenho máximo.</li>
+                <li>🧠 <strong>Limpeza de RAM:</strong> Libera cache acumulado desnecessário.</li>
+                <li>🎮 <strong>Prioridade de Jogos:</strong> Ajusta o registro para focar o CPU no seu game.</li>
+                <li>🚫 <strong>Debloater:</strong> Remove telemetria e apps inúteis da Microsoft.</li>
+                <li>🌐 <strong>Rede:</strong> Otimiza o DNS e configurações de latência.</li>
+            </ul>
+
+            <div class="warning">
+                <strong>Aviso:</strong> Este script desativa alguns recursos de segurança (como o Defender) para ganhar performance. Use apenas se você souber o que está fazendo e for um usuário focado em jogos.
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        &copy; 2026 Arthur Otimizações. Feito para gamers.
+    </footer>
+
+</body>
+</html>
