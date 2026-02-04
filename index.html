@@ -65,11 +65,27 @@
             transition: all 0.3s ease;
             margin-top: 20px;
             box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            cursor: pointer;
         }
 
         .btn-download:hover {
             transform: translateY(-3px);
             box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+        }
+
+        /* ESTILO DO CONTADOR */
+        .download-counter {
+            margin-top: 15px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1rem;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        #count {
+            font-weight: bold;
+            color: var(--primary);
         }
 
         .section {
@@ -153,7 +169,12 @@
     <header>
         <h1 class="hero-title">Arthur Otimizações</h1>
         <p>Aumente seu FPS e reduza o input lag do Windows com um script automatizado.</p>
-        <a href="SCRIPT/Booster.rar" class="btn-download" download>BAIXAR SCRIPT (.BAT)</a>
+        
+        <a href="SCRIPT/Booster.rar" id="downloadBtn" class="btn-download" download>BAIXAR SCRIPT (.BAT)</a>
+        
+        <div class="download-counter">
+            Downloads realizados: <span id="count">carregando...</span>
+        </div>
     </header>
 
     <div class="container">
@@ -214,6 +235,42 @@
     <footer>
         &copy; 2026 Arthur Otimizações. Feito para gamers.
     </footer>
+
+    <script>
+        // Esta é uma chave única para o seu site. 
+        // Se quiser zerar o contador, mude o nome 'arthur_booster_v1' para v2, etc.
+        const namespace = "arthur_otimizacoes";
+        const key = "download_counter";
+
+        const countEl = document.getElementById('count');
+        const downloadBtn = document.getElementById('downloadBtn');
+
+        // Função para buscar o número atual
+        async function updateDisplay() {
+            try {
+                const response = await fetch(`https://api.countapi.xyz/get/${namespace}/${key}`);
+                const data = await response.json();
+                countEl.innerText = data.value || 0;
+            } catch (error) {
+                // Se a chave não existir ainda, criamos com 0
+                countEl.innerText = "0";
+            }
+        }
+
+        // Função para aumentar o número quando clicar
+        downloadBtn.addEventListener('click', async () => {
+            try {
+                const response = await fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`);
+                const data = await response.json();
+                countEl.innerText = data.value;
+            } catch (error) {
+                console.error("Erro ao contabilizar download.");
+            }
+        });
+
+        // Iniciar exibição ao carregar página
+        updateDisplay();
+    </script>
 
 </body>
 </html>
