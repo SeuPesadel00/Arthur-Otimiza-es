@@ -61,33 +61,7 @@ set o=[38;5;202m
 set bb=[38;5;74m
 set nn=[38;5;82m
 set rr=[1;91m
-set blb= [1;94m
-set bn= [1;38;5;129m
-set ha= [38;5;203m
-set frr= [38;2;0;255;255m
-set fw= [97m
-set "redd= [04m" 
-set ha= [38;5;203m
-set "fk= [92m" 
-set "xv= [91m" 
-set "spar= [04m" 
-set "sof= [1m" 
-set "ww= [0m" 
-set "bvv= [94m" 
-set op= [38;5;214m 
-set "tq= [0m" 
-set "mnb= [91m"
-set "zi= [96m" 
-set "er= [40;33m" 
-set "po= [40m" 
-set "pu= [93m" 
-set "cya= [96m" 
-set "ggg= [90m" 
-set "rp= [35m" 
-set "drp= [95m" 
-set "dr= [38;5;90m" 
-
-cls
+set "blb=!ESC![1;94m"set "bn=!ESC![1;38;5;129m"set "ha=!ESC![38;5;203m"set "frr=!ESC![38;2;0;255;255m"set "fw=!ESC![97m"set "redd=!ESC![04m"set "ha=!ESC![38;5;203m"set "fk=!ESC![92m"set "xv=!ESC![91m"set "spar=!ESC![04m"set "sof=!ESC![1m"set "ww=!ESC![0m"set "bvv=!ESC![94m"set "op=!ESC![38;5;214m"set "tq=!ESC![0m"set "mnb=!ESC![91m"set "zi=!ESC![96m"set "er=!ESC![40;33m"set "po=!ESC![40m"set "pu=!ESC![93m"set "cya=!ESC![96m"set "ggg=!ESC![90m"set "rp=!ESC![35m"set "drp=!ESC![95m"set "dr=!ESC![38;5;90m"cls
 
 
 title Capital Daark Game Booster
