@@ -92,7 +92,7 @@ cls
 
 title Capital Daark Game Booster
 cls
-set "ESC= "
+for /F %%a in ('echo prompt $E ^| cmd') do set "ESC=%%a"
 cls
 
 
@@ -307,7 +307,7 @@ goto :menu
 
 :menuwindows
 cls
-set "ESC="
+for /F %%a in ('echo prompt $E ^| cmd') do set "ESC=%%a"
 cls
 echo(
 set "lines[0]=                      __      __.__            .___                   
@@ -1086,7 +1086,7 @@ goto :menu
 
 :prioridadegames
 cls
-set "ESC="
+for /F %%a in ('echo prompt $E ^| cmd') do set "ESC=%%a"
 cls
 echo(
 set "lines[0]=                        ________                              
@@ -1676,7 +1676,7 @@ goto :prioridadegames
 
 :perifericos
 cls
-set "ESC="
+for /F %%a in ('echo prompt $E ^| cmd') do set "ESC=%%a"
 cls
 echo(
 set "lines[0]=              ___ ___                  .___                              
