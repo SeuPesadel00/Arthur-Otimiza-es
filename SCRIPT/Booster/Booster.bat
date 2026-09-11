@@ -178,9 +178,12 @@ echo           OTIMIZADOR DE CONEXAO E DNS - CAPITAL DAARK
 echo ======================================================
 echo.
 
-if not exist "%~dp0DnsJumper.exe" (
+set "dnsJumperExe=%~dp0bin\DnsJumper.exe"
+if not exist "%dnsJumperExe%" set "dnsJumperExe=%~dp0DnsJumper.exe"
+
+if not exist "%dnsJumperExe%" (
     echo [AVISO] DnsJumper.exe nao encontrado. Baixando versao oficial...
-    powershell -Command "$zip='%temp%\DnsJumper.zip'; Invoke-WebRequest -Uri 'https://www.sordum.org/files/download/dns-jumper/dnsjumper.zip' -OutFile $zip; Expand-Archive -Path $zip -DestinationPath '%~dp0' -Force; Remove-Item $zip -Force"
+    powershell -Command "$zip='%temp%\DnsJumper.zip'; Invoke-WebRequest -Uri 'https://www.sordum.org/files/download/dns-jumper/dnsjumper.zip' -OutFile $zip; Expand-Archive -Path $zip -DestinationPath '%~dp0bin' -Force; Remove-Item $zip -Force"
 )
 
 echo [1/3] Limpando cache DNS local...
@@ -191,8 +194,8 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProf
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "SystemResponsiveness" /t REG_DWORD /d 0 /f >nul 2>&1
 
 echo [3/3] Iniciando ferramenta DNS Jumper...
-if exist "%~dp0DnsJumper.exe" (
-    start "" "%~dp0DnsJumper.exe"
+if exist "%dnsJumperExe%" (
+    start "" "%dnsJumperExe%"
 ) else (
     echo [!] Nao foi possivel iniciar o DNS Jumper.
 )
@@ -271,13 +274,14 @@ exit
 
 :limparram
 Echo Limpando Memória ram...
-set "emptyStandbyList=%~dp0EmptyStandbyList.exe"
+set "emptyStandbyList=%~dp0bin\EmptyStandbyList.exe"
+if not exist "%emptyStandbyList%" set "emptyStandbyList=%~dp0EmptyStandbyList.exe"
 
 if not exist "%emptyStandbyList%" (
-    echo [ERRO] O arquivo EmptyStandbyList.exe nao foi encontrado.
-    echo Certifique-se de que ele esta na mesma pasta deste script.
+    echo [ERRO] O arquivo EmptyStandbyList.exe nao foi encontrado na pasta bin.
+    echo Certifique-se de que a pasta bin esta junto deste script.
     pause
-    exit /b
+    goto :menu
 )
 
 echo Limpando o cache de memoria RAM...
@@ -1040,29 +1044,16 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /v ServiceKeepAlive 
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" /v DisableBehaviorMonitoring /t REG_DWORD /d 1 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" /v DisableIOAVProtection /t REG_DWORD /d 1 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" /v DisableOnAccessProtection /t REG_DWORD /d 1 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" /v DisableRealtimeMonitoring /t REG_DWORD /d 1 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Reporting" /v DisableEnhancedNotifications /t REG_DWORD /d 1 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications" /v DisableNotifications /t REG_DWORD /d 1 /f
-reg add "HKCU\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications" /v NoToastApplicationNotification /t REG_DWORD /d 1 /f
-reg add "HKCU\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications" /v NoToastApplicationNotificationOnLockScreen /t REG_DWORD /d 1 /f
-Echo Desativado com Sucesso!
-pause
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" /v DisableRealtimeMonito:prioridadegames
 cls
-goto :menuwindows
-
-:opcao28
-cls
-echo Desativando Download Maps Manager...
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\MapsBroker" /v Start /t REG_DWORD /d 4 /f
-Echo Desativado com Sucesso!
-pause
-cls
-goto :menuwindows
-
-:opcao29
-cls
-echo Desativando TimeStamp...
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem" /v NtfsDisableLastAccessUpdate /t REG_DWORD /d 1 /f
+echo(
+echo  %op%                        ________                              %w%
+echo  %op%                       /  _____/_____    _____   ____   ______%w%
+echo  %m%                      /   \  ___\__  \  /     \_/ __ \ /  ___/%w%
+echo  %m%                      \    \_\  \/ __ \|  Y Y  \  ___/ \___ \ %w%
+echo  %d%                       \______  (____  /__|_|  /\___  >____  >%w%
+echo  %d%                              \/     \/      \/     \/     \/ %w%
+echo( REG_DWORD /d 1 /f
 Echo Desativado com Sucesso!
 pause
 cls
@@ -1765,10 +1756,12 @@ goto :perifericos
 :opcao3
 cls
 echo Iniciando Open Hardware Monitor...
-if exist "%~dp0OpenHardwareMonitor\OpenHardwareMonitor.exe" (
-    start "" "%~dp0OpenHardwareMonitor\OpenHardwareMonitor.exe"
-) else if exist "%~dp0OpenHardwareMonitor.exe" (
-    start "" "%~dp0OpenHardwareMonitor.exe"
+set "ohmExe=%~dp0bin\OpenHardwareMonitor\OpenHardwareMonitor.exe"
+if not exist "%ohmExe%" set "ohmExe=%~dp0OpenHardwareMonitor\OpenHardwareMonitor.exe"
+if not exist "%ohmExe%" set "ohmExe=%~dp0OpenHardwareMonitor.exe"
+
+if exist "%ohmExe%" (
+    start "" "%ohmExe%"
 ) else (
     echo [AVISO] Open Hardware Monitor nao encontrado.
 )
@@ -1927,10 +1920,13 @@ echo ======================================================
 echo       GERENCIADOR DE INICIALIZACAO - AUTORUNS (SYSINTERNALS)
 echo ======================================================
 echo Iniciando Autoruns oficial da Microsoft...
-if exist "%~dp0Autoruns64.exe" (
-    start "" "%~dp0Autoruns64.exe"
-) else if exist "%~dp0Autoruns.exe" (
-    start "" "%~dp0Autoruns.exe"
+set "autorunExe=%~dp0bin\Autoruns64.exe"
+if not exist "%autorunExe%" set "autorunExe=%~dp0bin\Autoruns.exe"
+if not exist "%autorunExe%" set "autorunExe=%~dp0Autoruns64.exe"
+if not exist "%autorunExe%" set "autorunExe=%~dp0Autoruns.exe"
+
+if exist "%autorunExe%" (
+    start "" "%autorunExe%"
 ) else (
     echo [AVISO] Autoruns nao encontrado na pasta.
 )
@@ -1942,10 +1938,12 @@ goto :menu
 :tempera
 cls
 echo Iniciando Open Hardware Monitor...
-if exist "%~dp0OpenHardwareMonitor\OpenHardwareMonitor.exe" (
-    start "" "%~dp0OpenHardwareMonitor\OpenHardwareMonitor.exe"
-) else if exist "%~dp0OpenHardwareMonitor.exe" (
-    start "" "%~dp0OpenHardwareMonitor.exe"
+set "ohmExe=%~dp0bin\OpenHardwareMonitor\OpenHardwareMonitor.exe"
+if not exist "%ohmExe%" set "ohmExe=%~dp0OpenHardwareMonitor\OpenHardwareMonitor.exe"
+if not exist "%ohmExe%" set "ohmExe=%~dp0OpenHardwareMonitor.exe"
+
+if exist "%ohmExe%" (
+    start "" "%ohmExe%"
 ) else (
     echo [AVISO] Open Hardware Monitor nao encontrado.
 )
